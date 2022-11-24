@@ -60,6 +60,7 @@
             gap: 50px;
             justify-content: center;
 
+
             h1{
                     font-size: 50px;
                     color: dimgray;
@@ -69,6 +70,15 @@
                 flex-direction: column;
                 justify-content: center;
                 gap:30px;
+
+                .error{
+                    color:red;
+                    // background-color:dimgray;
+                    width:fit-content;
+                    
+                    border-radius: 5px;
+                    border: none;
+                }
                 
                 input{
                     border: none;

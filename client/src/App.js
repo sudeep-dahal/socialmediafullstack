@@ -16,16 +16,21 @@ import Profile from "./pages/profile/Profile"
 import { DarkModeContext } from "./context/darkModeContext";
 import {useContext} from "react"
 import { AuthContext } from "./context/authContext";
+import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
+
 
 function App() {
 
-  const {currentUser}= useContext(AuthContext);
   const {darkMode} = useContext(DarkModeContext);
+  const {currentUser}= useContext(AuthContext); 
+  const queryClient = new QueryClient()
  
 
 
   const Layout=()=>{
     return(
+      <QueryClientProvider client={queryClient}>
+
       <div  style={{margin:"-10px"}}className={`theme-${darkMode?"dark":"light"}`}>
         <Navbar/>
         <div style={{display:"flex"}}>
@@ -37,15 +42,20 @@ function App() {
 
         </div>  
       </div>
+      </QueryClientProvider>
     )
   }
 
-  const ProtectedRoute=({children})=>{
+   const ProtectedRoute=({children})=>{
+    
     if(!currentUser){
+     
       return <Navigate to ="/login"/>
     }
-    return children
+    return children;
   }
+  
+  
   const router = createBrowserRouter([
 
     {
@@ -86,3 +96,5 @@ function App() {
 }
 
 export default App;
+
+

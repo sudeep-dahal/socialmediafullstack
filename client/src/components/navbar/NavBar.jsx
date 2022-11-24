@@ -23,6 +23,7 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <div className="left">
+        
         <Link to='/' style={{textDecoration:"none"}}>
           <span>Chat Book</span>
         </Link>
